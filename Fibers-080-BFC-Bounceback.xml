@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+
+<geometry>
+    <!-- PCFSF的STL文件名称及路径 -->
+    <mesh> ./Fibers-512-080-24-010-BFC-ok.stl </mesh>
+    <!-- 整个仿真域的尺寸(m) -->
+    <domain> <x> 0.001 </x> <y> 0.001 </y> <z> 0.001 </z> </domain>
+    <!-- 使包围盒更大；仅用于可视化的目的。对于仿真，令extraLayer=0也是可以的 -->
+    <extraLayer> 0 </extraLayer>
+</geometry>
+
+<!-- 流体的所有属性都用物理单位 -->
+<!-- 包括空气的运动粘度，空气的密度. -->
+<fluid>
+    <!-- 运动粘度 -->
+    <kinematicViscosity> 1.4607e-05 </kinematicViscosity>
+    <!-- 空气密度 -->
+    <density> 1.225 </density>
+</fluid>
+
+<numerics>
+    <!-- 格子单位的压降：0.0001, 0.0005, 0.005 -->
+    <pressureDrop> 0.0001 0.0005 0.005 </pressureDrop>
+    <!-- 变量flowDirection用于计算分辨率：0代表x方向，1代表y方向，2代表z方向 -->
+    <flowDirection> 2 </flowDirection>
+    <!-- referenceResolution是网格细分层次为0时的分辨率 -->
+    <referenceResolution> 101 </referenceResolution>
+</numerics>
+
+<simulation>
+    <!-- 仿真时间的上限(s)。当仿真收敛时，会提早退出。 -->
+    <maxIter>  4001 </maxIter>
+    <!-- 平滑网格细分的最大层次 -->
+    <maxLevel> 0      </maxLevel>
+    <!-- 控制仿真收敛的残差 -->
+    <epsilon>  1.e-4  </epsilon>
+
+    <performOutput>  True  </performOutput>
+    <doImages>       True  </doImages>
+</simulation>
+
